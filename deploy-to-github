@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Script zum Pushen der SmartConnect Demo zu GitHub
+# Verwendung: ./deploy-to-github.sh "Commit-Nachricht"
+
+# Verzeichnis der Demo
+DEMO_DIR="/home/.sites/689/site7951508/web/smartconnect-demo"
+# Auth-Optionen (eine auswählen):
+# Option 1: SSH (empfohlen)
+REPO_URL="git@github.com:einfachstarten/smartconnect-demo.git"
+
+# Option 2: HTTPS mit Personal Access Token
+# REPO_URL="https://YOUR_TOKEN@github.com/einfachstarten/smartconnect-demo.git"
+
+# Option 3: HTTPS (wird nach Credentials fragen)
+# REPO_URL="https://github.com/einfachstarten/smartconnect-demo.git"
+
+# Commit-Nachricht (Standard falls keine angegeben)
+COMMIT_MSG="${1:-Update SmartConnect Demo}"
+
+echo "🚀 Deploying SmartConnect Demo to GitHub..."
+
+# In Demo-Verzeichnis wechseln
+cd "$DEMO_DIR" || {
+    echo "❌ Fehler: Verzeichnis $DEMO_DIR nicht gefunden!"
+    exit 1
+}
+
+# Git initialisieren falls noch nicht geschehen
+if [ ! -d ".git" ]; then
+    echo "📦 Initialisiere Git Repository..."
+    git init
+    git branch -M main
+fi
+
+# Remote origin setzen/aktualisieren
+echo "🔗 Setze Remote Origin..."
+git remote remove origin 2>/dev/null || true
+git remote add origin "$REPO_URL"
+
+# Alle Dateien hinzufügen
+echo "📁 Füge Dateien hinzu..."
+git add .
+
+# Status anzeigen
+echo "📋 Git Status:"
+git status --short
+
+# Commit erstellen
+echo "💾 Erstelle Commit: $COMMIT_MSG"
+git commit -m "$COMMIT_MSG"
+
+# Zu GitHub pushen
+echo "🌐 Pushe zu GitHub..."
+git push -u origin main --force
+
+echo "✅ Demo erfolgreich zu GitHub gepusht!"
+echo "🔗 Repository: https://github.com/einfachstarten/smartconnect-demo"
