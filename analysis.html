@@ -4,9 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarDiagnose Demo - Analysis</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="analysis.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 50%, #ffaa00 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 796px;
+            background: #f8f9fa;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 50%, #ffaa00 100%);
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .app-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .diagnosis-id {
+            font-size: 14px;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .content {
+            padding: 20px;
+            height: 620px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #fff;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .lang-btn {
+            padding: 10px 16px;
+            border: 3px solid #000;
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 100%);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ffd633 0%, #ffaa00 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 204, 2, 0.4);
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .vehicle-status {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-weight: 700;
+            font-size: 16px;
+            color: #28a745;
+        }
+
+        .status-label {
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .problems-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-icon {
+            color: #ffc107;
+            font-size: 20px;
+        }
+
+        .problem-summary {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #856404;
+        }
+
+        .speech-controls {
+            margin-bottom: 20px;
+        }
+        
+        .speech-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: 3px solid #000;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .speech-btn:hover {
+            background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+            transform: translateY(-2px);
+        }
+        
+        .speech-btn.speaking {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translateY(-2px) scale(1); }
+            50% { transform: translateY(-2px) scale(1.02); }
+            100% { transform: translateY(-2px) scale(1); }
+        }
+        
+        .speech-icon {
+            font-size: 20px;
+        }
+
         .chat-interface {
             background: #fff;
             border-radius: 8px;
@@ -89,6 +313,62 @@
             background: #e9ecef;
             border-color: #adb5bd;
         }
+
+        .problems-list {
+            background: #fff;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .problem-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .problem-item:last-child {
+            border-bottom: none;
+        }
+
+        .problem-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ffc107;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .problem-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #495057;
+        }
+
+        .recommendation {
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 50%, #ffaa00 100%);
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            border: 3px solid #000;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 204, 2, 0.3);
+        }
+
+        .recommendation-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -141,6 +421,13 @@
                     
                     <div class="problem-summary">
                         <p data-translate="problem_summary">Ihr Fahrzeug weist mehrere Kommunikationsprobleme zwischen verschiedenen elektronischen Systemen auf. Die meisten Probleme betreffen Komfort- und Motorsysteme, die eine Werkstattdiagnose benötigen.</p>
+                    </div>
+                    
+                    <div class="speech-controls">
+                        <button class="speech-btn" onclick="toggleSpeech()" id="speechBtn">
+                            <span class="speech-icon">🔊</span>
+                            <span data-translate="speech_btn">Diagnose vorlesen</span>
+                        </button>
                     </div>
                     
                     <div class="chat-interface">
@@ -210,7 +497,9 @@
                 rec_text: "Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden, um Folgeschäden zu vermeiden.",
                 chat_title: "Fragen Sie unseren KI-Assistenten",
                 chat_empty: "Stellen Sie eine Frage zu Ihrer Fahrzeugdiagnose...",
-                chat_placeholder: "Ihre Frage eingeben..."
+                chat_placeholder: "Ihre Frage eingeben...",
+                speech_btn: "Diagnose vorlesen",
+                speech_text: "Fahrzeugdiagnose Zusammenfassung: Ihr Fahrzeug weist mehrere Kommunikationsprobleme zwischen verschiedenen elektronischen Systemen auf. Die Dringlichkeit ist gering. Gefundene Probleme: Audio- und Video-Systeme haben Verbindungsprobleme. Klimaanlage funktioniert möglicherweise nicht korrekt. Es gibt Kommunikationsprobleme zwischen Fahrzeugsystemen. Der Motor könnte unrund laufen oder an Leistung verlieren. Der Motorsensor zeigt Störungen an. Empfehlung: Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden."
             },
             it: {
                 battery: "Batteria",
@@ -229,7 +518,9 @@
                 rec_text: "Fissate un appuntamento in officina. I problemi non sono critici, ma dovrebbero essere risolti per evitare danni consequenziali.",
                 chat_title: "Chiedete al nostro assistente IA",
                 chat_empty: "Fate una domanda sulla diagnosi del vostro veicolo...",
-                chat_placeholder: "Inserite la vostra domanda..."
+                chat_placeholder: "Inserite la vostra domanda...",
+                speech_btn: "Leggi diagnosi",
+                speech_text: "Riassunto diagnosi veicolo: Il vostro veicolo presenta diversi problemi di comunicazione tra vari sistemi elettronici. L'urgenza è bassa. Problemi trovati: I sistemi audio e video hanno problemi di connessione. L'aria condizionata potrebbe non funzionare correttamente. Ci sono problemi di comunicazione tra i sistemi del veicolo. Il motore potrebbe girare irregolarmente o perdere potenza. Il sensore del motore mostra disturbi. Raccomandazione: Fissate un appuntamento in officina. I problemi non sono critici."
             },
             hr: {
                 battery: "Baterija",
@@ -248,7 +539,9 @@
                 rec_text: "Zakažite termin u radionici. Problemi nisu kritični, ali ih treba riješiti kako bi se izbjegle naknadne štete.",
                 chat_title: "Pitajte našeg AI asistenta",
                 chat_empty: "Postavite pitanje o dijagnozi vašeg vozila...",
-                chat_placeholder: "Unesite svoje pitanje..."
+                chat_placeholder: "Unesite svoje pitanje...",
+                speech_btn: "Čitaj dijagnozu",
+                speech_text: "Sažetak dijagnoze vozila: Vaše vozilo ima nekoliko problema s komunikacijom između različitih elektroničkih sustava. Hitnost je niska. Pronađeni problemi: Audio i video sustavi imaju probleme s povezivanjem. Klimatizacija možda ne radi ispravno. Postoje problemi komunikacije između sustava vozila. Motor bi mogao raditi neravnomjerno ili gubiti snagu. Senzor motora pokazuje smetnje. Preporuka: Zakažite termin u radionici. Problemi nisu kritični."
             },
             xk: {
                 battery: "Bateria",
@@ -267,13 +560,94 @@
                 rec_text: "Caktoni një takim në servis. Problemet nuk janë kritike, por duhet të zgjidhen për të shmangur dëmet pasardhëse.",
                 chat_title: "Pyetni asistentin tonë AI",
                 chat_empty: "Bëni një pyetje për diagnozën e automjetit tuaj...",
-                chat_placeholder: "Shkruani pyetjen tuaj..."
+                chat_placeholder: "Shkruani pyetjen tuaj...",
+                speech_btn: "Lexo diagnozën",
+                speech_text: "Përmbledhja e diagnozës së automjetit: Automjeti juaj ka disa probleme komunikimi midis sistemeve të ndryshme elektronike. Urgjenca është e ulët. Problemet e gjetura: Sistemet audio dhe video kanë probleme lidhjeje. Kondicioneri mund të mos funksionojë siç duhet. Ka probleme komunikimi midis sistemeve të automjetit. Motori mund të punojë në mënyrë të parregullt ose të humbasë fuqi. Sensori i motorit tregon çrregullime. Rekomandimi: Caktoni një takim në servis. Problemet nuk janë kritike."
             }
         };
 
         let currentLanguage = 'de';
+        let currentSpeechSynthesis = null;
+        let isSpeaking = false;
+        
+        const languageVoices = {
+            de: 'de-DE',
+            it: 'it-IT', 
+            hr: 'hr-HR',
+            xk: 'sq-AL' // Albanian
+        };
+        
+        function toggleSpeech() {
+            if (isSpeaking) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        }
+        
+        function startSpeech() {
+            if ('speechSynthesis' in window) {
+                const speechText = translations[currentLanguage].speech_text;
+                const utterance = new SpeechSynthesisUtterance(speechText);
+                
+                // Set language
+                utterance.lang = languageVoices[currentLanguage] || 'de-DE';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                
+                // Event handlers
+                utterance.onstart = () => {
+                    isSpeaking = true;
+                    updateSpeechButton();
+                };
+                
+                utterance.onend = () => {
+                    isSpeaking = false;
+                    updateSpeechButton();
+                };
+                
+                utterance.onerror = () => {
+                    isSpeaking = false;
+                    updateSpeechButton();
+                };
+                
+                currentSpeechSynthesis = utterance;
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Sprachausgabe wird von diesem Browser nicht unterstützt.');
+            }
+        }
+        
+        function stopSpeech() {
+            if (speechSynthesis) {
+                speechSynthesis.cancel();
+                isSpeaking = false;
+                updateSpeechButton();
+            }
+        }
+        
+        function updateSpeechButton() {
+            const btn = document.getElementById('speechBtn');
+            const icon = btn.querySelector('.speech-icon');
+            const text = btn.querySelector('[data-translate="speech_btn"]');
+            
+            if (isSpeaking) {
+                btn.classList.add('speaking');
+                icon.textContent = '⏹️';
+                text.textContent = translations[currentLanguage].speech_btn.replace('vorlesen', 'stoppen').replace('Leggi', 'Ferma').replace('Čitaj', 'Zaustavi').replace('Lexo', 'Ndalo');
+            } else {
+                btn.classList.remove('speaking');
+                icon.textContent = '🔊';
+                text.textContent = translations[currentLanguage].speech_btn;
+            }
+        }
         
         function switchLanguage(lang) {
+            // Stop current speech if active
+            if (isSpeaking) {
+                stopSpeech();
+            }
+            
             currentLanguage = lang;
             
             // Update active button
@@ -296,6 +670,9 @@
             if (chatInput && translations[lang] && translations[lang]['chat_placeholder']) {
                 chatInput.placeholder = translations[lang]['chat_placeholder'];
             }
+            
+            // Update speech button
+            updateSpeechButton();
         }
         
         function applyHeaderTranslation(lang) {
