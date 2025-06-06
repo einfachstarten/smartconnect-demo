@@ -241,7 +241,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🚗 AI enriched Smart Connect Diagnostics</div>
+            <div class="logo">🚗 CarDiagnose</div>
             <div class="tagline" data-translate="tagline">Intelligente Fahrzeugdiagnose für alle</div>
         </div>
         
@@ -253,47 +253,109 @@
         </div>
         
         <div class="content-card">
-            <h1 data-translate="main_title">Fahrzeugdiagnose Demo</h1>
-            <p data-translate="main_desc">Diese Demo zeigt eine moderne, benutzerfreundliche Fahrzeugdiagnose-App, die komplexe technische Daten in verständliche Informationen für Autobesitzer übersetzt.</p>
+            <h1 data-translate="main_title">Das Problem: ADAC Smart Connect ist zu komplex</h1>
+            <p data-translate="main_desc">Der ADAC Smart Connect Fahrzeugscan zeigt Autofahrern dutzende technische Fehlercodes, die niemand außer Mechanikern versteht. Das führt zu Überforderung und Unsicherheit.</p>
             
-            <h2 data-translate="features_title">Hauptfunktionen</h2>
+            <div class="problem-example" style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                <strong data-translate="problem_title">Typisches ADAC-Diagnoseergebnis:</strong>
+                <div style="margin-top: 10px; font-family: monospace; font-size: 12px; color: #856404;">
+                    P2090-11 - Nockenwellenversteller B Bank 1 Spannungsversorgung niedrig<br>
+                    U1FA0 - Audio/Video-Verbindungen Kommunikation gestört<br>
+                    B1003-55 - Klimaanlagensteuergerät Codierung fehlerhaft<br>
+                    U1208-81 - CAN-Bus/Datenkabel Kommunikation gestört<br>
+                    P0340-31 - Nockenwellensensor A Stromkreis fehlerhaft
+                </div>
+                <p style="margin-top: 15px; font-style: italic;" data-translate="problem_question">"Was bedeutet das alles? Kann ich noch fahren? Wie teuer wird das?"</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 data-translate="solution_title">Unsere Lösung: AI-gestützte Vereinfachung</h2>
+            
+            <div class="solution-steps">
+                <div class="step-card" style="background: #e8f5e8; border-left: 4px solid #28a745; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <h3 style="color: #155724; margin-bottom: 10px;">🤖 <span data-translate="step1_title">Schritt 1: AI Summary</span></h3>
+                    <p data-translate="step1_desc">Unsere KI analysiert die technischen Fehlercodes über die Hella Gutmann Systems (HGS) DTC Decoding API und erstellt eine verständliche Zusammenfassung in einfacher Sprache.</p>
+                    <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 6px; border: 1px solid #c3e6cb;">
+                        <strong data-translate="step1_example_title">Aus komplexen Codes wird:</strong>
+                        <p style="margin-top: 8px;" data-translate="step1_example">"Ihr Fahrzeug hat Kommunikationsprobleme zwischen verschiedenen Systemen. Die Probleme betreffen Komfort- und Motorsysteme. Geringe Dringlichkeit - Werkstatttermin empfohlen."</p>
+                    </div>
+                </div>
+
+                <div class="step-card" style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <h3 style="color: #856404; margin-bottom: 10px;">💬 <span data-translate="step2_title">Schritt 2: Chat mit der Diagnose</span></h3>
+                    <p data-translate="step2_desc">Autofahrer können direkt mit ihrem spezifischen Diagnoseergebnis "chatten" und individuelle Fragen stellen wie "Kann ich noch fahren?" oder "Wie dringend ist das?"</p>
+                    <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 6px; border: 1px solid #ffeaa7;">
+                        <div style="font-size: 13px; margin-bottom: 8px;"><strong>🙋‍♂️</strong> <span data-translate="chat_example_q">"Was soll ich nun machen?"</span></div>
+                        <div style="font-size: 13px; margin-bottom: 8px;"><strong>🤖</strong> <span data-translate="chat_example_a">"Zeitnah einen Werkstatttermin vereinbaren. Die Probleme sind nicht kritisch."</span></div>
+                        <div style="font-size: 13px;"><strong>🙋‍♂️</strong> <span data-translate="chat_example_q2">"Kann ich noch weiterfahren?"</span></div>
+                    </div>
+                </div>
+
+                <div class="step-card" style="background: #d4edda; border-left: 4px solid #155724; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <h3 style="color: #155724; margin-bottom: 10px;">🌍 <span data-translate="step3_title">Schritt 3: Weltweiter Notfall-Support</span></h3>
+                    <p data-translate="step3_desc">Das Killer-Feature: Sie sind im Ausland und Ihr Auto hat ein Problem. Die AI Summary kann sofort in die lokale Sprache übersetzt werden - dem Pannenfahrer oder Mechaniker vor Ort können Sie die Diagnose in seiner Sprache zeigen.</p>
+                    <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 6px; border: 1px solid #c3e6cb;">
+                        <div style="font-weight: bold; margin-bottom: 10px;" data-translate="use_case_title">🚗 Anwendungsfall:</div>
+                        <div style="font-size: 14px; line-height: 1.5;" data-translate="use_case_text">Sie sind in Thailand im Urlaub → Auto macht Probleme → Fahrzeugscan mit der App → AI Summary auf Thailändisch → Lokaler Mechaniker versteht sofort das Problem → Schnelle Hilfe ohne Sprachbarriere!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 data-translate="features_title">Technische Innovation</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <div class="feature-title" data-translate="tech_title">Technischer Bericht</div>
-                    <div class="feature-desc" data-translate="tech_desc">Vollständige Diagnose mit allen Fehlercodes, Batteriedaten und detaillierten technischen Informationen für Werkstätten.</div>
+                    <div class="feature-icon">🔗</div>
+                    <div class="feature-title" data-translate="tech_integration_title">HGS API Integration</div>
+                    <div class="feature-desc" data-translate="tech_integration_desc">Model Context Protocol (MCP) Anbindung an die Hella Gutmann Systems DTC Decoding API für präzise Fehlercode-Interpretation.</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-title" data-translate="ai_title">KI-Powered Summary</div>
+                    <div class="feature-desc" data-translate="ai_desc">Künstliche Intelligenz übersetzt komplexe ADAC-Diagnosedaten in verständliche Sprache für normale Autofahrer.</div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
-                    <div class="feature-title" data-translate="ai_title">KI-Assistent</div>
-                    <div class="feature-desc" data-translate="ai_desc">Benutzerfreundliche Analyse mit Chat-Interface, wo Autobesitzer Fragen stellen und verständliche Antworten erhalten.</div>
+                    <div class="feature-title" data-translate="chat_title">Personalisierter Chat</div>
+                    <div class="feature-desc" data-translate="chat_desc">Autofahrer können spezifische Fragen zu ihrem individuellen Diagnoseergebnis stellen und erhalten maßgeschneiderte Antworten.</div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
-                    <div class="feature-title" data-translate="multi_title">Mehrsprachig</div>
-                    <div class="feature-desc" data-translate="multi_desc">Vollständige Unterstützung für Deutsch, Italienisch, Kroatisch und Kosovarisch - perfekt für den europäischen Markt.</div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <div class="feature-title" data-translate="mobile_title">Mobile-First</div>
-                    <div class="feature-desc" data-translate="mobile_desc">Optimiert für Smartphones mit intuitivem Design und einfacher Navigation zwischen den verschiedenen Ansichten.</div>
+                    <div class="feature-title" data-translate="global_title">Globaler Notfall-Support</div>
+                    <div class="feature-desc" data-translate="global_desc">Sofortige Übersetzung der Diagnose in jede Sprache der Welt - perfekt für Pannen im Ausland.</div>
                 </div>
             </div>
             
             <div class="demo-preview">
                 <div class="phone-preview">
-                    <div class="phone-screen">
-                        <div class="screen-title" data-translate="screen1_title">Technische Ansicht</div>
-                        <div class="screen-desc" data-translate="screen1_desc">Detaillierte Fehlercodes und Systemdaten für Profis</div>
+                    <div class="phone-screen" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);">
+                        <div style="font-size: 24px; margin-bottom: 10px;">⚠️</div>
+                        <div class="screen-title" data-translate="screen1_title">ADAC Original</div>
+                        <div class="screen-desc" data-translate="screen1_desc">Komplexe Fehlercodes überfordern normale Autofahrer</div>
+                        <div style="font-family: monospace; font-size: 8px; margin-top: 10px; color: #856404; text-align: left;">
+                            P2090-11<br>
+                            U1FA0<br>
+                            B1003-55<br>
+                            ...
+                        </div>
                     </div>
                 </div>
+                <div style="display: flex; align-items: center; font-size: 32px; color: #28a745;">→</div>
                 <div class="phone-preview">
-                    <div class="phone-screen">
-                        <div class="screen-title" data-translate="screen2_title">Benutzer-Ansicht</div>
-                        <div class="screen-desc" data-translate="screen2_desc">Verständliche Erklärungen und Chat-Support für Autobesitzer</div>
+                    <div class="phone-screen" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                        <div style="font-size: 24px; margin-bottom: 10px;">🤖</div>
+                        <div class="screen-title" data-translate="screen2_title">Unsere Lösung</div>
+                        <div class="screen-desc" data-translate="screen2_desc">AI Summary + Chat + Mehrsprachigkeit</div>
+                        <div style="font-size: 9px; margin-top: 10px; color: #155724; text-align: left;">
+                            ✓ Verständliche Erklärung<br>
+                            ✓ Chat-Support<br>
+                            ✓ Jede Sprache
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,83 +371,147 @@
         const translations = {
             de: {
                 tagline: "Intelligente Fahrzeugdiagnose für alle",
-                main_title: "Moderne Fahrzeugdiagnose Demo",
-                main_desc: "Diese Demo zeigt eine moderne, benutzerfreundliche Fahrzeugdiagnose-App, die komplexe technische Daten in verständliche Informationen für Autobesitzer übersetzt.",
-                features_title: "Hauptfunktionen",
-                tech_title: "Technischer Bericht",
-                tech_desc: "Vollständige Diagnose mit allen Fehlercodes, Batteriedaten und detaillierten technischen Informationen für Werkstätten.",
-                ai_title: "KI-Assistent",
-                ai_desc: "Benutzerfreundliche Analyse mit Chat-Interface, wo Autobesitzer Fragen stellen und verständliche Antworten erhalten.",
-                multi_title: "Mehrsprachig",
-                multi_desc: "Vollständige Unterstützung für Deutsch, Italienisch, Kroatisch und Kosovarisch - perfekt für den europäischen Markt.",
-                mobile_title: "Mobile-First",
-                mobile_desc: "Optimiert für Smartphones mit intuitivem Design und einfacher Navigation zwischen den verschiedenen Ansichten.",
-                screen1_title: "Technische Ansicht",
-                screen1_desc: "Detaillierte Fehlercodes und Systemdaten für Profis",
-                screen2_title: "Benutzer-Ansicht", 
-                screen2_desc: "Verständliche Erklärungen und Chat-Support für Autobesitzer",
+                main_title: "Das Problem: ADAC Smart Connect ist zu komplex",
+                main_desc: "Der ADAC Smart Connect Fahrzeugscan zeigt Autofahrern dutzende technische Fehlercodes, die niemand außer Mechanikern versteht. Das führt zu Überforderung und Unsicherheit.",
+                problem_title: "Typisches ADAC-Diagnoseergebnis:",
+                problem_question: "\"Was bedeutet das alles? Kann ich noch fahren? Wie teuer wird das?\"",
+                solution_title: "Unsere Lösung: AI-gestützte Vereinfachung",
+                step1_title: "Schritt 1: AI Summary",
+                step1_desc: "Unsere KI analysiert die technischen Fehlercodes über die Hella Gutmann Systems (HGS) DTC Decoding API und erstellt eine verständliche Zusammenfassung in einfacher Sprache.",
+                step1_example_title: "Aus komplexen Codes wird:",
+                step1_example: "\"Ihr Fahrzeug hat Kommunikationsprobleme zwischen verschiedenen Systemen. Die Probleme betreffen Komfort- und Motorsysteme. Geringe Dringlichkeit - Werkstatttermin empfohlen.\"",
+                step2_title: "Schritt 2: Chat mit der Diagnose",
+                step2_desc: "Autofahrer können direkt mit ihrem spezifischen Diagnoseergebnis \"chatten\" und individuelle Fragen stellen wie \"Kann ich noch fahren?\" oder \"Wie dringend ist das?\"",
+                chat_example_q: "\"Was soll ich nun machen?\"",
+                chat_example_a: "\"Zeitnah einen Werkstatttermin vereinbaren. Die Probleme sind nicht kritisch.\"",
+                chat_example_q2: "\"Kann ich noch weiterfahren?\"",
+                step3_title: "Schritt 3: Weltweiter Notfall-Support",
+                step3_desc: "Das Killer-Feature: Sie sind im Ausland und Ihr Auto hat ein Problem. Die AI Summary kann sofort in die lokale Sprache übersetzt werden - dem Pannenfahrer oder Mechaniker vor Ort können Sie die Diagnose in seiner Sprache zeigen.",
+                use_case_title: "🚗 Anwendungsfall:",
+                use_case_text: "Sie sind in Thailand im Urlaub → Auto macht Probleme → Fahrzeugscan mit der App → AI Summary auf Thailändisch → Lokaler Mechaniker versteht sofort das Problem → Schnelle Hilfe ohne Sprachbarriere!",
+                features_title: "Technische Innovation",
+                tech_integration_title: "HGS API Integration",
+                tech_integration_desc: "Model Context Protocol (MCP) Anbindung an die Hella Gutmann Systems DTC Decoding API für präzise Fehlercode-Interpretation.",
+                ai_title: "KI-Powered Summary",
+                ai_desc: "Künstliche Intelligenz übersetzt komplexe ADAC-Diagnosedaten in verständliche Sprache für normale Autofahrer.",
+                chat_title: "Personalisierter Chat",
+                chat_desc: "Autofahrer können spezifische Fragen zu ihrem individuellen Diagnoseergebnis stellen und erhalten maßgeschneiderte Antworten.",
+                global_title: "Globaler Notfall-Support",
+                global_desc: "Sofortige Übersetzung der Diagnose in jede Sprache der Welt - perfekt für Pannen im Ausland.",
+                screen1_title: "ADAC Original",
+                screen1_desc: "Komplexe Fehlercodes überfordern normale Autofahrer",
+                screen2_title: "Unsere Lösung", 
+                screen2_desc: "AI Summary + Chat + Mehrsprachigkeit",
                 demo_btn: "🚀 Live Demo Starten",
-                demo_note: "Klicken Sie den Button um die interaktive Demo zu erleben"
+                demo_note: "Erleben Sie die Transformation von komplexen Codes zu verständlichen Antworten"
             },
             en: {
                 tagline: "Intelligent Vehicle Diagnostics for Everyone",
-                main_title: "Modern Vehicle Diagnostics Demo",
-                main_desc: "This demo showcases a modern, user-friendly vehicle diagnostics app that translates complex technical data into understandable information for car owners.",
-                features_title: "Key Features",
-                tech_title: "Technical Report",
-                tech_desc: "Complete diagnostics with all error codes, battery data and detailed technical information for workshops.",
-                ai_title: "AI Assistant",
-                ai_desc: "User-friendly analysis with chat interface where car owners can ask questions and receive understandable answers.",
-                multi_title: "Multilingual",
-                multi_desc: "Full support for German, Italian, Croatian and Kosovar - perfect for the European market.",
-                mobile_title: "Mobile-First",
-                mobile_desc: "Optimized for smartphones with intuitive design and easy navigation between different views.",
-                screen1_title: "Technical View",
-                screen1_desc: "Detailed error codes and system data for professionals",
-                screen2_title: "User View",
-                screen2_desc: "Understandable explanations and chat support for car owners",
+                main_title: "The Problem: ADAC Smart Connect is too Complex",
+                main_desc: "ADAC Smart Connect vehicle scans show car owners dozens of technical error codes that only mechanics understand. This leads to confusion and uncertainty.",
+                problem_title: "Typical ADAC diagnostic result:",
+                problem_question: "\"What does all this mean? Can I still drive? How expensive will this be?\"",
+                solution_title: "Our Solution: AI-powered Simplification",
+                step1_title: "Step 1: AI Summary",
+                step1_desc: "Our AI analyzes technical error codes via the Hella Gutmann Systems (HGS) DTC Decoding API and creates an understandable summary in simple language.",
+                step1_example_title: "Complex codes become:",
+                step1_example: "\"Your vehicle has communication problems between various systems. The issues affect comfort and engine systems. Low urgency - workshop appointment recommended.\"",
+                step2_title: "Step 2: Chat with Diagnosis",
+                step2_desc: "Car owners can directly 'chat' with their specific diagnostic result and ask individual questions like 'Can I still drive?' or 'How urgent is this?'",
+                chat_example_q: "\"What should I do now?\"",
+                chat_example_a: "\"Schedule a workshop appointment soon. The problems are not critical.\"",
+                chat_example_q2: "\"Can I still drive?\"",
+                step3_title: "Step 3: Global Emergency Support",
+                step3_desc: "The killer feature: You're abroad and your car has a problem. The AI summary can be instantly translated into the local language - you can show the diagnosis to the breakdown service or local mechanic in their language.",
+                use_case_title: "🚗 Use Case:",
+                use_case_text: "You're on vacation in Thailand → Car problems → Vehicle scan with app → AI summary in Thai → Local mechanic immediately understands the problem → Quick help without language barrier!",
+                features_title: "Technical Innovation",
+                tech_integration_title: "HGS API Integration",
+                tech_integration_desc: "Model Context Protocol (MCP) connection to Hella Gutmann Systems DTC Decoding API for precise error code interpretation.",
+                ai_title: "AI-Powered Summary",
+                ai_desc: "Artificial intelligence translates complex ADAC diagnostic data into understandable language for regular car owners.",
+                chat_title: "Personalized Chat",
+                chat_desc: "Car owners can ask specific questions about their individual diagnostic result and receive tailored answers.",
+                global_title: "Global Emergency Support",
+                global_desc: "Instant translation of diagnosis into any language worldwide - perfect for breakdowns abroad.",
+                screen1_title: "ADAC Original",
+                screen1_desc: "Complex error codes overwhelm regular car owners",
+                screen2_title: "Our Solution",
+                screen2_desc: "AI Summary + Chat + Multilingual",
                 demo_btn: "🚀 Start Live Demo",
-                demo_note: "Click the button to experience the interactive demo"
+                demo_note: "Experience the transformation from complex codes to understandable answers"
             },
             hr: {
                 tagline: "Inteligentna dijagnostika vozila za sve",
-                main_title: "Demo moderne dijagnostike vozila",
-                main_desc: "Ovaj demo prikazuje modernu, korisnički prijateljsku aplikaciju za dijagnostiku vozila koja pretvara složene tehničke podatke u razumljive informacije za vlasnike automobila.",
-                features_title: "Glavne značajke",
-                tech_title: "Tehnički izvještaj",
-                tech_desc: "Potpuna dijagnostika sa svim kodovima grešaka, podacima o bateriji i detaljnim tehničkim informacijama za radionice.",
-                ai_title: "AI Asistent",
-                ai_desc: "Korisnički prijateljska analiza s chat sučeljem gdje vlasnici automobila mogu postavljati pitanja i dobivati razumljive odgovore.",
-                multi_title: "Višejezično",
-                multi_desc: "Puna podrška za njemački, talijanski, hrvatski i kosovarski - savršeno za europsko tržište.",
-                mobile_title: "Mobile-First",
-                mobile_desc: "Optimizirano za pametne telefone s intuitivnim dizajnom i lakom navigacijom između različitih prikaza.",
-                screen1_title: "Tehnički prikaz",
-                screen1_desc: "Detaljni kodovi grešaka i podaci o sustavu za stručnjake",
-                screen2_title: "Korisnički prikaz",
-                screen2_desc: "Razumljiva objašnjenja i chat podrška za vlasnike automobila",
-                demo_btn: "🚀 Pokretanje Live Demo",
-                demo_note: "Kliknite gumb da doživite interaktivni demo"
+                main_title: "Problem: ADAC Smart Connect je previše složen",
+                main_desc: "ADAC Smart Connect skeniranje vozila prikazuje vlasnicima automobila desetke tehničkih kodova grešaka koje razumiju samo mehaničari. To dovodi do zbunjenosti i nesigurnosti.",
+                problem_title: "Tipičan ADAC dijagnostički rezultat:",
+                problem_question: "\"Što sve ovo znači? Mogu li još voziti? Koliko će to koštati?\"",
+                solution_title: "Naše rješenje: AI-potpomognuto pojednostavljenje",
+                step1_title: "Korak 1: AI sažetak",
+                step1_desc: "Naša AI analizira tehničke kodove grešaka putem Hella Gutmann Systems (HGS) DTC Decoding API-ja i stvara razumljiv sažetak jednostavnim jezikom.",
+                step1_example_title: "Složeni kodovi postaju:",
+                step1_example: "\"Vaše vozilo ima probleme komunikacije između različitih sustava. Problemi utječu na sustave udobnosti i motora. Mala hitnost - preporučuje se termin u radionici.\"",
+                step2_title: "Korak 2: Chat s dijagnozom",
+                step2_desc: "Vlasnici automobila mogu izravno 'chatati' sa svojim specifičnim dijagnostičkim rezultatom i postavljati individualna pitanja poput 'Mogu li još voziti?' ili 'Koliko je to hitno?'",
+                chat_example_q: "\"Što sada trebam učiniti?\"",
+                chat_example_a: "\"Zakažite termin u radionici uskoro. Problemi nisu kritični.\"",
+                chat_example_q2: "\"Mogu li još voziti?\"",
+                step3_title: "Korak 3: Globalna podrška za hitne slučajeve",
+                step3_desc: "Killer značajka: U inozemstvu ste i vaš auto ima problem. AI sažetak može se odmah prevesti na lokalni jezik - dijagnozu možete pokazati pomoći na cesti ili lokalnom mehaničaru na njihovom jeziku.",
+                use_case_title: "🚗 Slučaj korištenja:",
+                use_case_text: "Na odmoru ste u Tajlandu → Problemi s autom → Skeniranje vozila aplikacijom → AI sažetak na tajlandskom → Lokalni mehaničar odmah razumije problem → Brza pomoć bez jezične barijere!",
+                features_title: "Tehnička inovacija",
+                tech_integration_title: "HGS API integracija",
+                tech_integration_desc: "Model Context Protocol (MCP) povezivanje s Hella Gutmann Systems DTC Decoding API-jem za preciznu interpretaciju kodova grešaka.",
+                ai_title: "AI-potpomognut sažetak",
+                ai_desc: "Umjetna inteligencija prevodi složene ADAC dijagnostičke podatke u razumljiv jezik za obične vlasnike automobila.",
+                chat_title: "Personalizirani chat",
+                chat_desc: "Vlasnici automobila mogu postaviti specifična pitanja o svom individualnom dijagnostičkom rezultatu i dobiti prilagođene odgovore.",
+                global_title: "Globalna podrška za hitne slučajeve",
+                global_desc: "Trenutni prijevod dijagnoze na bilo koji jezik svijeta - savršeno za kvarove u inozemstvu.",
+                screen1_title: "ADAC original",
+                screen1_desc: "Složeni kodovi grešaka preplavljuju obične vlasnike automobila",
+                screen2_title: "Naše rješenje",
+                screen2_desc: "AI sažetak + Chat + Višejezičnost",
+                demo_btn: "🚀 Pokretanje live demoa",
+                demo_note: "Doživite transformaciju od složenih kodova do razumljivih odgovora"
             },
             xk: {
                 tagline: "Diagnostikimi inteligjent i automjeteve për të gjithë",
-                main_title: "Demo e diagnostikimit modern të automjeteve",
-                main_desc: "Ky demo tregon një aplikacion modern dhe miqësor për diagnostikimin e automjeteve që përkthyen të dhënat teknike komplekse në informacione të kuptueshme për pronarët e makinave.",
-                features_title: "Karakteristikat kryesore",
-                tech_title: "Raporti teknik",
-                tech_desc: "Diagnostikim i plotë me të gjitha kodet e gabimeve, të dhënat e baterisë dhe informacione të detajuara teknike për punëtoritë.",
-                ai_title: "Asistenti AI",
-                ai_desc: "Analizë miqësore për përdoruesit me ndërfaqe bisede ku pronarët e makinave mund të bëjnë pyetje dhe të marrin përgjigje të kuptueshme.",
-                multi_title: "Shumëgjuhësh",
-                multi_desc: "Mbështetje e plotë për gjermanisht, italisht, kroatisht dhe kosovarisht - e përsosur për tregun evropian.",
-                mobile_title: "Mobile-First",
-                mobile_desc: "I optimizuar për telefona të mençur me dizajn intuitiv dhe navigim të lehtë midis pamjeve të ndryshme.",
-                screen1_title: "Pamja teknike",
-                screen1_desc: "Kodet e detajuara të gabimeve dhe të dhënat e sistemit për profesionistët",
-                screen2_title: "Pamja e përdoruesit",
-                screen2_desc: "Shpjegime të kuptueshme dhe mbështetje bisede për pronarët e makinave",
-                demo_btn: "🚀 Filloni Demo Live",
-                demo_note: "Klikoni butonin për të përjetuar demon interaktiv"
+                main_title: "Problemi: ADAC Smart Connect është shumë kompleks",
+                main_desc: "Skanimi i automjetit ADAC Smart Connect u tregon pronarëve të makinave dhjetëra kode teknike gabimesh që vetëm mekanikët i kuptojnë. Kjo çon në konfuzion dhe pasiguri.",
+                problem_title: "Rezultati tipik diagnostik i ADAC-së:",
+                problem_question: "\"Çfarë do të thotë gjithë kjo? A mund të drejtoj ende? Sa e kushtueshme do të jetë kjo?\"",
+                solution_title: "Zgjidhja jonë: Thjeshtëzim i mbështetur nga AI",
+                step1_title: "Hapi 1: Përmbledhja AI",
+                step1_desc: "AI-ja jonë analizon kodet teknike të gabimeve përmes Hella Gutmann Systems (HGS) DTC Decoding API dhe krijon një përmbledhje të kuptueshme në gjuhë të thjeshtë.",
+                step1_example_title: "Kodet komplekse bëhen:",
+                step1_example: "\"Automjeti juaj ka probleme komunikimi midis sistemeve të ndryshme. Problemet ndikojnë në sistemet e komforit dhe motorit. Urgjencë e ulët - rekomandohet takim në servis.\"",
+                step2_title: "Hapi 2: Chat me diagnozën",
+                step2_desc: "Pronarët e makinave mund të 'bisedojnë' drejtpërdrejt me rezultatin e tyre specifik diagnostik dhe të bëjnë pyetje individuale si 'A mund të drejtoj ende?' ose 'Sa urgjent është kjo?'",
+                chat_example_q: "\"Çfarë duhet të bëj tani?\"",
+                chat_example_a: "\"Caktoni një takim në servis së shpejti. Problemet nuk janë kritike.\"",
+                chat_example_q2: "\"A mund të drejtoj ende?\"",
+                step3_title: "Hapi 3: Mbështetja globale për emergjencat",
+                step3_desc: "Veçoria killer: Jeni jashtë vendit dhe makina juaj ka një problem. Përmbledhja AI mund të përkthehet menjëherë në gjuhën vendore - mund t'ia tregoni diagnozën shërbimit të prishjes ose mekanikut vendor në gjuhën e tyre.",
+                use_case_title: "🚗 Rasti i përdorimit:",
+                use_case_text: "Jeni në pushime në Tajlandë → Probleme me makinën → Skanimi i automjetit me aplikacion → Përmbledhja AI në tajlandisht → Mekaniku vendor e kupton menjëherë problemin → Ndihmë e shpejtë pa pengesë gjuhësore!",
+                features_title: "Inovacioni teknik",
+                tech_integration_title: "Integrimi HGS API",
+                tech_integration_desc: "Lidhja Model Context Protocol (MCP) me Hella Gutmann Systems DTC Decoding API për interpretim të saktë të kodeve të gabimeve.",
+                ai_title: "Përmbledhja e mbështetur nga AI",
+                ai_desc: "Inteligjenca artificiale përkthyen të dhënat komplekse diagnostike të ADAC-së në gjuhë të kuptueshme për pronarët e rregullt të makinave.",
+                chat_title: "Chat i personalizuar",
+                chat_desc: "Pronarët e makinave mund të bëjnë pyetje specifike për rezultatin e tyre individual diagnostik dhe të marrin përgjigje të përshtatura.",
+                global_title: "Mbështetja globale për emergjencat",
+                global_desc: "Përkthimi i menjëhershëm i diagnozës në çdo gjuhë të botës - i përsosur për prishje jashtë vendit.",
+                screen1_title: "ADAC origjinal",
+                screen1_desc: "Kodet komplekse të gabimeve mbytën pronarët e rregullt të makinave",
+                screen2_title: "Zgjidhja jonë",
+                screen2_desc: "Përmbledhja AI + Chat + Shumëgjuhësh",
+                demo_btn: "🚀 Filloni demon live",
+                demo_note: "Përjetoni transformimin nga kodet komplekse në përgjigje të kuptueshme"
             }
         };
 
