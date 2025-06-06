@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarDiagnose Demo - Technical</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="technical.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>⚡100%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="app-title">Fahrzeugdiagnose</div>
+                <div class="diagnosis-id">Diagnose-ID: 603 • 06. Nov. 2024</div>
+            </div>
+            
+            <div class="content">
+                <div class="summary-banner">
+                    <div class="summary-text">5 Fehlercodes gefunden. Geringe Dringlichkeit - Werkstatttermin empfohlen.</div>
+                    <button class="ai-analysis-btn" onclick="window.location.href='analysis.html'">Volle KI-Analyse</button>
+                </div>
+                
+                <div class="tech-header">
+                    <div class="mechanic-icon">👨‍🔧</div>
+                    <div class="tech-info">
+                        <h3>Unsere</h3>
+                        <p>Handlungsempfehlung</p>
+                    </div>
+                    <div class="car-icon">🚗</div>
+                </div>
+                
+                <div class="battery-chart">
+                    <div class="chart-title">Batterie Historie 26. Okt. 2024 - 06. Nov. 2024</div>
+                    <div class="chart-placeholder">
+                        <div class="chart-line"></div>
+                        <div class="chart-peaks">
+                            <div class="peak" style="left: 20%; height: 30px;"></div>
+                            <div class="peak" style="left: 25%; height: 35px;"></div>
+                            <div class="peak" style="left: 45%; height: 32px;"></div>
+                            <div class="peak" style="left: 60%; height: 28px;"></div>
+                            <div class="peak" style="left: 70%; height: 40px;"></div>
+                            <div class="peak" style="left: 75%; height: 38px;"></div>
+                            <div class="peak" style="left: 80%; height: 35px;"></div>
+                            <div class="peak" style="left: 90%; height: 30px;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vehicle-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12,98 V</div>
+                        <div>Batteriestand</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">73 %</div>
+                        <div>Tankfüllstand</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">20.403</div>
+                        <div>Kilometerstand</div>
+                    </div>
+                </div>
+                
+                <div class="error-codes-section">
+                    <div class="section-header">Ausgelesene Steuergeräte mit Fehlercodes</div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">U1FA0 - Bauteilgruppe Komfort</div>
+                        <div class="error-description">Steuergerät: Kombiinstrument</div>
+                        <div class="error-description">Audio/Video-Verbindungen Kommunikation gestört</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> 1/mehrere Steuergeräte im Datenaustausch falsch/nicht codiert</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Angeschlossene Systeme fehlerhaft, Warnhinweis über Display</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">B1003-55 - Bauteilgruppe Klimaanlage</div>
+                        <div class="error-description">Steuergerät: Klimatisierungsautomatik</div>
+                        <div class="error-description">Klimaanlagensteuergerät Codierung fehlerhaft</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> Codierung fehlerhaft, Steuergerät defekt</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Klimaanlagenregelung fehlerhaft, keine Heizfunktion</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">U1208-81 - Bauteilgruppe ABS</div>
+                        <div class="error-description">Steuergerät: Teves MK 100</div>
+                        <div class="error-description">CAN-Bus/Datenkabel vom Motorsteuergerät Kommunikation gestört</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> CAN-System defekt, Motorsteuergerät fehlerhaft</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Datenaustausch gestört</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">P2090-11 - Bauteilgruppe Motor</div>
+                        <div class="error-description">Steuergerät: Benzineinspritzung OBD</div>
+                        <div class="error-description">Nockenwellenversteller B Bank 1 Spannungsversorgung niedrig</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> Generator/Regler defekt, Verstellmechanismus defekt</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Motorleistung fehlt, kein/schlechter Leerlauf, Ruckeln</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">P0340-31 - Bauteilgruppe Motor</div>
+                        <div class="error-description">Steuergerät: Benzineinspritzung OBD</div>
+                        <div class="error-description">Nockenwellensensor A (Bank 1) Stromkreis fehlerhaft</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> Sensor verschmutzt/verölt/beschädigt, Sensor defekt</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Startverhalten schlecht, Motorleistung fehlt, Motor stirbt ab</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">P0340 - Bauteilgruppe OBD/EOBD</div>
+                        <div class="error-description">Steuergerät: ECM-EngineControl</div>
+                        <div class="error-description">Nockenwellensensor A (Bank 1) Stromkreis fehlerhaft</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> Sensor verschmutzt/verölt/beschädigt, Luftspalt zu groß</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Startverhalten schlecht, Motor läuft nicht, Fehlerlampe leuchtet</div>
+                    </div>
+                    
+                    <div class="error-code">
+                        <div class="error-code-title">P2090 - Bauteilgruppe OBD/EOBD</div>
+                        <div class="error-description">Steuergerät: ECM-EngineControl</div>
+                        <div class="error-description">Nockenwellenversteller B Bank 1 Spannungsversorgung niedrig</div>
+                        <div class="error-description"><strong>Dringlichkeit:</strong> Gering</div>
+                        <div class="error-description"><strong>Mögliche Ursache:</strong> Generator/Regler defekt, Verstellmechanismus defekt</div>
+                        <div class="error-description"><strong>Auswirkungen:</strong> Motorleistung fehlt, kein/schlechter Leerlauf, Ruckeln</div>
+                    </div>
+                </div>
+                
+                <div class="no-error-section">
+                    <div class="section-header">Ausgelesene Steuergeräte ohne Fehlercodes</div>
+                    <div class="no-error-item">Bauteilgruppe Lenkung - Steuergerät: Hydr. Servolenkung</div>
+                    <div class="no-error-item">Bauteilgruppe Komfort - Steuergerät: schlüsselloser Zugang BML</div>
+                    <div class="no-error-item">Bauteilgruppe Airbag - Steuergerät: Airbag</div>
+                </div>
+                
+                <div class="error-codes-section">
+                    <div class="section-header">Handlungsempfehlungen</div>
+                    <div class="error-code">
+                        <div class="error-code-title">Komfort- oder Assistenzsystem</div>
+                        <div class="error-description">Ein Komfort- oder Assistenzsystem funktioniert nicht, weil ein System oder Bauteil eventuell deaktiviert ist: Bitte Service-Termin mit der Werkstatt vereinbaren.</div>
+                    </div>
+                    <div class="error-code">
+                        <div class="error-code-title">Klimaanlage</div>
+                        <div class="error-description">Die Klimaanlage funktioniert nicht oder nur eingeschränkt, weil ein System oder Bauteil defekt ist: Bitte Service-Termin mit der Werkstatt vereinbaren.</div>
+                    </div>
+                    <div class="error-code">
+                        <div class="error-code-title">Motor</div>
+                        <div class="error-description">Warnleuchte leuchtet, der Motor ruckelt, läuft nicht rund oder verliert an Leistung? Weiterfahrt ist nur eingeschränkt möglich: Sofort Service-Termin mit der Werkstatt vereinbaren!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarDiagnose Demo - Analysis</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="analysis.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>⚡100%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="app-title">Fahrzeugdiagnose</div>
+                <div class="diagnosis-id">Diagnose-ID: 603 • 06. Nov. 2024</div>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('de')">🇩🇪</button>
+                <button class="lang-btn" onclick="switchLanguage('it')">🇮🇹</button>
+                <button class="lang-btn" onclick="switchLanguage('hr')">🇭🇷</button>
+                <button class="lang-btn" onclick="switchLanguage('xk')">🇽🇰</button>
+            </div>
+            
+            <div class="content">
+                <button class="back-btn" onclick="window.location.href='technical.html'" data-translate="back_btn">← Zurück zum technischen Bericht</button>
+                
+                <div class="vehicle-status">
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-value">12,98V</div>
+                            <div class="status-label" data-translate="battery">Batterie</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-value">73%</div>
+                            <div class="status-label" data-translate="fuel">Tank</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-value">20.403</div>
+                            <div class="status-label" data-translate="km">km</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="urgency-badge" data-translate="urgency">Geringe Dringlichkeit</div>
+                
+                <div class="problems-section">
+                    <div class="section-title">
+                        <span class="warning-icon">⚠️</span>
+                        <span data-translate="problems_title">Gefundene Probleme</span>
+                    </div>
+                    
+                    <div class="problem-summary">
+                        <p data-translate="problem_summary">Ihr Fahrzeug weist mehrere Kommunikationsprobleme zwischen verschiedenen elektronischen Systemen auf. Die meisten Probleme betreffen Komfort- und Motorsysteme, die eine Werkstattdiagnose benötigen.</p>
+                    </div>
+                    
+                    <div class="problems-list">
+                        <div class="problem-item">
+                            <div class="problem-bullet"></div>
+                            <div class="problem-text" data-translate="problem1">Audio- und Video-Systeme haben Verbindungsprobleme</div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-bullet"></div>
+                            <div class="problem-text" data-translate="problem2">Klimaanlage funktioniert möglicherweise nicht korrekt</div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-bullet"></div>
+                            <div class="problem-text" data-translate="problem3">Kommunikationsprobleme zwischen Fahrzeugsystemen</div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-bullet"></div>
+                            <div class="problem-text" data-translate="problem4">Motor könnte unrund laufen oder an Leistung verlieren</div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-bullet"></div>
+                            <div class="problem-text" data-translate="problem5">Motorsensor zeigt Störungen an</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title" data-translate="rec_title">Empfehlung</div>
+                    <div class="recommendation-text" data-translate="rec_text">Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden, um Folgeschäden zu vermeiden.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            de: {
+                battery: "Batterie",
+                fuel: "Tank",
+                km: "km",
+                back_btn: "← Zurück zum technischen Bericht",
+                urgency: "Geringe Dringlichkeit",
+                problems_title: "Gefundene Probleme",
+                problem_summary: "Ihr Fahrzeug weist mehrere Kommunikationsprobleme zwischen verschiedenen elektronischen Systemen auf. Die meisten Probleme betreffen Komfort- und Motorsysteme, die eine Werkstattdiagnose benötigen.",
+                problem1: "Audio- und Video-Systeme haben Verbindungsprobleme",
+                problem2: "Klimaanlage funktioniert möglicherweise nicht korrekt",
+                problem3: "Kommunikationsprobleme zwischen Fahrzeugsystemen",
+                problem4: "Motor könnte unrund laufen oder an Leistung verlieren",
+                problem5: "Motorsensor zeigt Störungen an",
+                rec_title: "Empfehlung",
+                rec_text: "Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden, um Folgeschäden zu vermeiden."
+            },
+            it: {
+                battery: "Batteria",
+                fuel: "Carburante",
+                km: "km",
+                back_btn: "← Torna al rapporto tecnico",
+                urgency: "Urgenza Bassa",
+                problems_title: "Problemi Trovati",
+                problem_summary: "Il vostro veicolo presenta diversi problemi di comunicazione tra vari sistemi elettronici. La maggior parte dei problemi riguarda i sistemi di comfort e del motore che richiedono una diagnosi in officina.",
+                problem1: "I sistemi audio e video hanno problemi di connessione",
+                problem2: "L'aria condizionata potrebbe non funzionare correttamente",
+                problem3: "Problemi di comunicazione tra i sistemi del veicolo",
+                problem4: "Il motore potrebbe girare irregolarmente o perdere potenza",
+                problem5: "Il sensore del motore mostra disturbi",
+                rec_title: "Raccomandazione",
+                rec_text: "Fissate un appuntamento in officina. I problemi non sono critici, ma dovrebbero essere risolti per evitare danni consequenziali."
+            },
+            hr: {
+                battery: "Baterija",
+                fuel: "Gorivo",
+                km: "km",
+                back_btn: "← Natrag na tehnički izvještaj",
+                urgency: "Niska Hitnost",
+                problems_title: "Pronađeni Problemi",
+                problem_summary: "Vaše vozilo ima nekoliko problema s komunikacijom između različitih elektroničkih sustava. Većina problema se odnosi na sustave udobnosti i motora koji zahtijevaju dijagnozu u radionici.",
+                problem1: "Audio i video sustavi imaju probleme s povezivanjem",
+                problem2: "Klimatizacija možda ne radi ispravno",
+                problem3: "Problemi komunikacije između sustava vozila",
+                problem4: "Motor bi mogao raditi neravnomjerno ili gubiti snagu",
+                problem5: "Senzor motora pokazuje smetnje",
+                rec_title: "Preporuka",
+                rec_text: "Zakažite termin u radionici. Problemi nisu kritični, ali ih treba riješiti kako bi se izbjegle naknadne štete."
+            },
+            xk: {
+                battery: "Bateria",
+                fuel: "Karburanti",
+                km: "km",
+                back_btn: "← Kthehu te raporti teknik",
+                urgency: "Urgjencë e Ulët",
+                problems_title: "Problemet e Gjetura",
+                problem_summary: "Automjeti juaj ka disa probleme komunikimi midis sistemeve të ndryshme elektronike. Shumica e problemeve lidhen me sistemet e komforit dhe motorit që kërkojnë diagnozë në servis.",
+                problem1: "Sistemet audio dhe video kanë probleme lidhjeje",
+                problem2: "Kondicioneri mund të mos funksionojë siç duhet",
+                problem3: "Probleme komunikimi midis sistemeve të automjetit",
+                problem4: "Motori mund të punojë në mënyrë të parregullt ose të humbasë fuqi",
+                problem5: "Sensori i motorit tregon çrregullime",
+                rec_title: "Rekomandimi",
+                rec_text: "Caktoni një takim në servis. Problemet nuk janë kritike, por duhet të zgjidhen për të shmangur dëmet pasardhëse."
+            }
+        };
+
+        let currentLanguage = 'de';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update header
+            applyHeaderTranslation(lang);
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+        
+        function applyHeaderTranslation(lang) {
+            const headerTranslations = {
+                de: { title: "Fahrzeugdiagnose", id: "Diagnose-ID: 603 • 06. Nov. 2024" },
+                it: { title: "Diagnosi Veicolo", id: "ID Diagnosi: 603 • 06. Nov. 2024" },
+                hr: { title: "Dijagnoza Vozila", id: "ID Dijagnoze: 603 • 06. stu. 2024" },
+                xk: { title: "Diagnostika e Automjetit", id: "ID Diagnozës: 603 • 06. Nën. 2024" }
+            };
+            
+            if (headerTranslations[lang]) {
+                document.querySelector('.app-title').textContent = headerTranslations[lang].title;
+                document.querySelector('.diagnosis-id').textContent = headerTranslations[lang].id;
+            }
+        }
+    </script>
+</body>
+</html>
