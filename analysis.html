@@ -6,6 +6,90 @@
     <title>CarDiagnose Demo - Analysis</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="analysis.css">
+    <style>
+        .chat-interface {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            font-weight: 600;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-messages {
+            padding: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafbfc;
+        }
+
+        .chat-empty {
+            color: #6c757d;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .chat-input-area {
+            padding: 12px 15px;
+            border-top: 1px solid #f1f3f4;
+            background: #fff;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 12px;
+            outline: none;
+            background: #fff;
+        }
+
+        .chat-input:focus {
+            border-color: #ffcc02;
+            box-shadow: 0 0 0 1px rgba(255, 204, 2, 0.25);
+        }
+
+        .chat-send-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            color: #6c757d;
+            transition: all 0.2s ease;
+        }
+
+        .chat-send-btn:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+    </style>
 </head>
 <body>
     <div class="phone-frame">
@@ -59,6 +143,22 @@
                         <p data-translate="problem_summary">Ihr Fahrzeug weist mehrere Kommunikationsprobleme zwischen verschiedenen elektronischen Systemen auf. Die meisten Probleme betreffen Komfort- und Motorsysteme, die eine Werkstattdiagnose benötigen.</p>
                     </div>
                     
+                    <div class="chat-interface">
+                        <div class="chat-header">
+                            <span>💬</span>
+                            <span data-translate="chat_title">Fragen Sie unseren KI-Assistenten</span>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="chat-empty" data-translate="chat_empty">Stellen Sie eine Frage zu Ihrer Fahrzeugdiagnose...</div>
+                        </div>
+                        <div class="chat-input-area">
+                            <div class="chat-input-wrapper">
+                                <input type="text" class="chat-input" data-translate-placeholder="chat_placeholder" placeholder="Ihre Frage eingeben...">
+                                <button class="chat-send-btn">→</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="problems-list">
                         <div class="problem-item">
                             <div class="problem-bullet"></div>
@@ -107,7 +207,10 @@
                 problem4: "Motor könnte unrund laufen oder an Leistung verlieren",
                 problem5: "Motorsensor zeigt Störungen an",
                 rec_title: "Empfehlung",
-                rec_text: "Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden, um Folgeschäden zu vermeiden."
+                rec_text: "Vereinbaren Sie einen Werkstatttermin. Die Probleme sind nicht kritisch, sollten aber behoben werden, um Folgeschäden zu vermeiden.",
+                chat_title: "Fragen Sie unseren KI-Assistenten",
+                chat_empty: "Stellen Sie eine Frage zu Ihrer Fahrzeugdiagnose...",
+                chat_placeholder: "Ihre Frage eingeben..."
             },
             it: {
                 battery: "Batteria",
@@ -123,7 +226,10 @@
                 problem4: "Il motore potrebbe girare irregolarmente o perdere potenza",
                 problem5: "Il sensore del motore mostra disturbi",
                 rec_title: "Raccomandazione",
-                rec_text: "Fissate un appuntamento in officina. I problemi non sono critici, ma dovrebbero essere risolti per evitare danni consequenziali."
+                rec_text: "Fissate un appuntamento in officina. I problemi non sono critici, ma dovrebbero essere risolti per evitare danni consequenziali.",
+                chat_title: "Chiedete al nostro assistente IA",
+                chat_empty: "Fate una domanda sulla diagnosi del vostro veicolo...",
+                chat_placeholder: "Inserite la vostra domanda..."
             },
             hr: {
                 battery: "Baterija",
@@ -139,7 +245,10 @@
                 problem4: "Motor bi mogao raditi neravnomjerno ili gubiti snagu",
                 problem5: "Senzor motora pokazuje smetnje",
                 rec_title: "Preporuka",
-                rec_text: "Zakažite termin u radionici. Problemi nisu kritični, ali ih treba riješiti kako bi se izbjegle naknadne štete."
+                rec_text: "Zakažite termin u radionici. Problemi nisu kritični, ali ih treba riješiti kako bi se izbjegle naknadne štete.",
+                chat_title: "Pitajte našeg AI asistenta",
+                chat_empty: "Postavite pitanje o dijagnozi vašeg vozila...",
+                chat_placeholder: "Unesite svoje pitanje..."
             },
             xk: {
                 battery: "Bateria",
@@ -155,7 +264,10 @@
                 problem4: "Motori mund të punojë në mënyrë të parregullt ose të humbasë fuqi",
                 problem5: "Sensori i motorit tregon çrregullime",
                 rec_title: "Rekomandimi",
-                rec_text: "Caktoni një takim në servis. Problemet nuk janë kritike, por duhet të zgjidhen për të shmangur dëmet pasardhëse."
+                rec_text: "Caktoni një takim në servis. Problemet nuk janë kritike, por duhet të zgjidhen për të shmangur dëmet pasardhëse.",
+                chat_title: "Pyetni asistentin tonë AI",
+                chat_empty: "Bëni një pyetje për diagnozën e automjetit tuaj...",
+                chat_placeholder: "Shkruani pyetjen tuaj..."
             }
         };
 
@@ -178,6 +290,12 @@
                     element.textContent = translations[lang][key];
                 }
             });
+            
+            // Update placeholder
+            const chatInput = document.querySelector('[data-translate-placeholder]');
+            if (chatInput && translations[lang] && translations[lang]['chat_placeholder']) {
+                chatInput.placeholder = translations[lang]['chat_placeholder'];
+            }
         }
         
         function applyHeaderTranslation(lang) {
