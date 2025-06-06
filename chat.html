@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarDiagnose Demo - Chat</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #fff;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            border: 2px solid #000;
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 100%);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ffd633 0%, #ffaa00 100%);
+            transform: scale(1.05);
+        }
+
+        .content {
+            height: 561px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 12px;
+            align-self: flex-start;
+        }
+
+        .chat-header {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .chat-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 5px;
+        }
+
+        .chat-subtitle {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 5px;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 100%);
+            color: #333;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.ai .message-bubble {
+            background: #f1f3f4;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: #007bff;
+            color: white;
+        }
+
+        .message.ai .message-avatar {
+            background: #28a745;
+            color: white;
+        }
+
+        .chat-input-area {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 20px;
+            background: #f8f9fa;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-send-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffcc02 0%, #ffd633 100%);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .chat-send-btn:hover {
+            background: linear-gradient(135deg, #ffd633 0%, #ffaa00 100%);
+            transform: scale(1.05);
+        }
+
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 8px 15px;
+            color: #6c757d;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        .quick-questions {
+            margin-bottom: 15px;
+        }
+
+        .quick-questions-title {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .quick-question-btn {
+            display: block;
+            width: 100%;
+            background: white;
+            border: 1px solid #dee2e6;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-question-btn:hover {
+            background: #f8f9fa;
+            border-color: #ffcc02;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>⚡100%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="app-title">KI-Chat Assistent</div>
+                <div class="diagnosis-id">Diagnose-ID: 603 • 06. Nov. 2024</div>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('de')">🇩🇪</button>
+                <button class="lang-btn" onclick="switchLanguage('it')">🇮🇹</button>
+                <button class="lang-btn" onclick="switchLanguage('hr')">🇭🇷</button>
+                <button class="lang-btn" onclick="switchLanguage('xk')">🇽🇰</button>
+            </div>
+            
+            <div class="content">
+                <button class="back-btn" onclick="window.location.href='analysis.html'" data-translate="back_btn">← Zurück zur Analyse</button>
+                
+                <div class="chat-header">
+                    <div class="chat-title" data-translate="chat_title">Chat mit KI-Assistenten</div>
+                    <div class="chat-subtitle" data-translate="chat_subtitle">Stellen Sie Fragen zu Ihrer Fahrzeugdiagnose</div>
+                </div>
+
+                <div class="quick-questions">
+                    <div class="quick-questions-title" data-translate="quick_title">Häufige Fragen:</div>
+                    <button class="quick-question-btn" onclick="askQuestion(this)" data-translate="q1">Kann ich noch fahren?</button>
+                    <button class="quick-question-btn" onclick="askQuestion(this)" data-translate="q2">Wie dringend ist das?</button>
+                    <button class="quick-question-btn" onclick="askQuestion(this)" data-translate="q3">Was kostet die Reparatur ungefähr?</button>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-bubble" data-translate="welcome_msg">
+                            Hallo! Ich bin Ihr KI-Assistent und kann Ihnen bei Fragen zu Ihrer Fahrzeugdiagnose helfen. Was möchten Sie wissen?
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator" data-translate="typing">KI tippt...</div>
+                
+                <div class="chat-input-area">
+                    <div class="chat-input-wrapper">
+                        <input type="text" class="chat-input" id="chatInput" data-translate-placeholder="input_placeholder" placeholder="Ihre Frage eingeben..." onkeypress="handleKeyPress(event)">
+                        <button class="chat-send-btn" onclick="sendMessage()" id="sendBtn">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            de: {
+                back_btn: "← Zurück zur Analyse",
+                chat_title: "Chat mit KI-Assistenten",
+                chat_subtitle: "Stellen Sie Fragen zu Ihrer Fahrzeugdiagnose",
+                quick_title: "Häufige Fragen:",
+                q1: "Kann ich noch fahren?",
+                q2: "Wie dringend ist das?",
+                q3: "Was kostet die Reparatur ungefähr?",
+                welcome_msg: "Hallo! Ich bin Ihr KI-Assistent und kann Ihnen bei Fragen zu Ihrer Fahrzeugdiagnose helfen. Was möchten Sie wissen?",
+                typing: "KI tippt...",
+                input_placeholder: "Ihre Frage eingeben..."
+            },
+            it: {
+                back_btn: "← Torna all'analisi",
+                chat_title: "Chat con Assistente IA",
+                chat_subtitle: "Fate domande sulla diagnosi del vostro veicolo",
+                quick_title: "Domande frequenti:",
+                q1: "Posso ancora guidare?",
+                q2: "Quanto è urgente?",
+                q3: "Quanto costa la riparazione?",
+                welcome_msg: "Ciao! Sono il vostro assistente IA e posso aiutarvi con domande sulla diagnosi del vostro veicolo. Cosa vorreste sapere?",
+                typing: "IA sta scrivendo...",
+                input_placeholder: "Inserite la vostra domanda..."
+            },
+            hr: {
+                back_btn: "← Natrag na analizu",
+                chat_title: "Chat s AI asistentom",
+                chat_subtitle: "Postavite pitanja o dijagnozi vašeg vozila",
+                quick_title: "Česta pitanja:",
+                q1: "Mogu li još voziti?",
+                q2: "Koliko je hitno?",
+                q3: "Koliko košta popravak?",
+                welcome_msg: "Pozdrav! Ja sam vaš AI asistent i mogu vam pomoći s pitanjima o dijagnozi vašeg vozila. Što biste htjeli znati?",
+                typing: "AI piše...",
+                input_placeholder: "Unesite svoje pitanje..."
+            },
+            xk: {
+                back_btn: "← Kthehu te analiza",
+                chat_title: "Chat me Asistentin AI",
+                chat_subtitle: "Bëni pyetje për diagnozën e automjetit tuaj",
+                quick_title: "Pyetje të shpeshta:",
+                q1: "A mund të drejtoj ende?",
+                q2: "Sa urgjente është?",
+                q3: "Sa kushton riparimi?",
+                welcome_msg: "Përshëndetje! Unë jam asistenti juaj AI dhe mund t'ju ndihmoj me pyetje për diagnozën e automjetit tuaj. Çfarë do të donit të dinit?",
+                typing: "AI po shkruan...",
+                input_placeholder: "Shkruani pyetjen tuaj..."
+            }
+        };
+
+        const responses = {
+            de: {
+                "kann ich noch fahren": "Ja, Sie können noch fahren! Die gefundenen Probleme sind als 'geringe Dringlichkeit' eingestuft. Vermeiden Sie jedoch lange Fahrten und vereinbaren Sie zeitnah einen Werkstatttermin.",
+                "wie dringend": "Die Dringlichkeit ist gering. Sie müssen nicht sofort anhalten, sollten aber innerhalb der nächsten 1-2 Wochen eine Werkstatt aufsuchen.",
+                "was kostet": "Die Reparaturkosten können zwischen 200-800€ liegen, je nachdem welche Teile betroffen sind. Eine genaue Diagnose in der Werkstatt gibt Ihnen Klarheit über die tatsächlichen Kosten.",
+                "klimaanlage": "Die Klimaanlage hat ein Codierungsproblem. Sie funktioniert möglicherweise nicht richtig oder gar nicht. Die Reparatur ist meist nicht teuer - oft nur eine Neukodierung nötig.",
+                "motor": "Bei den Motorproblemen handelt es sich hauptsächlich um Sensorfehler. Der Motor läuft noch, könnte aber unrund laufen. Zeitnahe Reparatur empfohlen.",
+                "default": "Basierend auf Ihrer Diagnose kann ich Ihnen sagen, dass die Probleme nicht kritisch sind. Möchten Sie mehr über ein bestimmtes System wissen?"
+            },
+            it: {
+                "posso ancora guidare": "Sì, potete ancora guidare! I problemi trovati sono classificati come 'urgenza bassa'. Evitate però viaggi lunghi e fissate presto un appuntamento in officina.",
+                "quanto è urgente": "L'urgenza è bassa. Non dovete fermarvi immediatamente, ma dovreste andare in officina entro le prossime 1-2 settimane.",
+                "quanto costa": "I costi di riparazione possono essere tra 200-800€, a seconda delle parti coinvolte. Una diagnosi precisa in officina vi darà chiarezza sui costi effettivi.",
+                "default": "In base alla vostra diagnosi posso dirvi che i problemi non sono critici. Volete sapere di più su un sistema specifico?"
+            },
+            hr: {
+                "mogu li još voziti": "Da, još možete voziti! Pronađeni problemi su klasificirani kao 'niska hitnost'. Izbjegavajte duga putovanja i zakažite termin u radionici uskoro.",
+                "koliko je hitno": "Hitnost je niska. Ne morate se odmah zaustaviti, ali biste trebali ići u radionicu u sljedećih 1-2 tjedna.",
+                "koliko košta": "Troškovi popravka mogu biti između 200-800€, ovisno o tome koji su dijelovi zahvaćeni. Precizna dijagnoza u radionici dat će vam jasnoću o stvarnim troškovima.",
+                "default": "Na temelju vaše dijagnoze mogu vam reći da problemi nisu kritični. Želite li znati više o određenom sustavu?"
+            },
+            xk: {
+                "a mund të drejtoj ende": "Po, ende mund të drejtoni! Problemet e gjetura janë të klasifikuara si 'urgjencë e ulët'. Shmangni udhëtimet e gjata dhe caktoni një takim në servis së shpejti.",
+                "sa urgjente": "Urgjenca është e ulët. Nuk duhet të ndaloni menjëherë, por duhet të shkoni në servis brenda 1-2 javëve të ardhshme.",
+                "sa kushton": "Kostoja e riparimit mund të jetë midis 200-800€, në varësi të pjesëve të prekura. Një diagnozë e saktë në servis do t'ju japë qartësi për kostot aktuale.",
+                "default": "Bazuar në diagnozën tuaj mund t'ju them se problemet nuk janë kritike. Doni të dini më shumë për një sistem të caktuar?"
+            }
+        };
+
+        let currentLanguage = 'de';
+        let isTyping = false;
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            applyHeaderTranslation(lang);
+            
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            const chatInput = document.querySelector('[data-translate-placeholder]');
+            if (chatInput && translations[lang] && translations[lang]['input_placeholder']) {
+                chatInput.placeholder = translations[lang]['input_placeholder'];
+            }
+        }
+        
+        function applyHeaderTranslation(lang) {
+            const headerTranslations = {
+                de: { title: "KI-Chat Assistent", id: "Diagnose-ID: 603 • 06. Nov. 2024" },
+                it: { title: "Assistente Chat IA", id: "ID Diagnosi: 603 • 06. Nov. 2024" },
+                hr: { title: "AI Chat Asistent", id: "ID Dijagnoze: 603 • 06. stu. 2024" },
+                xk: { title: "Asistenti Chat AI", id: "ID Diagnozës: 603 • 06. Nën. 2024" }
+            };
+            
+            if (headerTranslations[lang]) {
+                document.querySelector('.app-title').textContent = headerTranslations[lang].title;
+                document.querySelector('.diagnosis-id').textContent = headerTranslations[lang].id;
+            }
+        }
+
+        function askQuestion(button) {
+            const question = button.textContent;
+            sendMessage(question);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !isTyping) {
+                sendMessage();
+            }
+        }
+
+        function sendMessage(predefinedMessage) {
+            if (isTyping) return;
+            
+            const input = document.getElementById('chatInput');
+            const message = predefinedMessage || input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage(message, 'user');
+            input.value = '';
+            
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(message.toLowerCase());
+                addMessage(response, 'ai');
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = sender === 'user' ? '👤' : '🤖';
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-bubble">${text}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            isTyping = true;
+            document.getElementById('typingIndicator').style.display = 'block';
+            document.getElementById('sendBtn').disabled = true;
+        }
+
+        function hideTyping() {
+            isTyping = false;
+            document.getElementById('typingIndicator').style.display = 'none';
+            document.getElementById('sendBtn').disabled = false;
+        }
+
+        function getResponse(message) {
+            const currentResponses = responses[currentLanguage];
+            
+            for (const key in currentResponses) {
+                if (message.includes(key)) {
+                    return currentResponses[key];
+                }
+            }
+            
+            return currentResponses['default'];
+        }
+    </script>
+</body>
+</html>
