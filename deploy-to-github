@@ -7,7 +7,7 @@
 DEMO_DIR="/home/.sites/689/site7951508/web/smartconnect-demo"
 # Auth-Optionen (eine auswählen):
 # Option 1: SSH (empfohlen)
-REPO_URL="git@github.com:einfachstarten/smartconnect-demo.git"
+REPO_URL="https://github.com/einfachstarten/smartconnect-demo.git"
 
 # Option 2: HTTPS mit Personal Access Token
 # REPO_URL="https://YOUR_TOKEN@github.com/einfachstarten/smartconnect-demo.git"
